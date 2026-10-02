@@ -1,0 +1,11 @@
+{
+  "title": "Siddhikka Portfolio",
+  "description": "Showcases a personal portfolio hero section with smooth timed intro animations, responsive design, and an engaging skills ticker to highlight expertise.",
+  "robots": {
+    "index": true
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
