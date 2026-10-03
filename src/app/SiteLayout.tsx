@@ -111,14 +111,15 @@ export default function SiteLayout() {
     [location.pathname, navigate, phase],
   );
 
+  const bare = location.pathname.startsWith("/explorations/");
   const value = useMemo(() => ({ go }), [go]);
 
   return (
     <TransitionContext.Provider value={value}>
-      <Navbar />
+      {!bare && <Navbar />}
       <div className={`route-stage route-${phase}`} key={location.pathname}>
         <Outlet />
-        <SiteFooter />
+        {!bare && <SiteFooter />}
       </div>
       <div className={`page-wipe page-wipe-${phase}`} aria-hidden="true" />
     </TransitionContext.Provider>

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   CardGrid,
   ExplorationCard,
@@ -8,6 +9,13 @@ import {
 } from "../components/PortfolioComponents";
 
 export default function WorkPage() {
+  useEffect(() => {
+    if (sessionStorage.getItem("scroll-to-explorations")) {
+      sessionStorage.removeItem("scroll-to-explorations");
+      document.getElementById("explorations")?.scrollIntoView();
+    }
+  }, []);
+
   return (
     <main className="work-page">
       <section className="work-section">
@@ -22,7 +30,7 @@ export default function WorkPage() {
         </CardGrid>
       </section>
 
-      <section className="work-section explorations-section">
+      <section id="explorations" className="work-section explorations-section">
         <SectionHeader label="Supporting work" title="My Explorations" />
         <CardGrid exploration>
           {explorations.map((project, index) => (

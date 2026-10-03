@@ -18,6 +18,17 @@ import financialDecisionsPresentation from "../assets/projects/financial-decisio
 import indiaPostCover from "../assets/projects/india-post-cover.png";
 import indiaPostPresentation from "../assets/projects/india-post-presentation.png";
 
+import lenskartCover from "../assets/projects/lenskart-cover.png";
+import lenskartPresentation from "../assets/projects/lenskart-presentation.png";
+
+import urbanSignalsCover from "../assets/projects/urban-signals-cover.png";
+import urbanSignalsPresentation from "../assets/projects/urban-signals-presentation.png";
+
+import tubbinCover from "../assets/projects/tubbin-cover.png";
+import tubbinFrame from "../assets/projects/tubbin-frame.png";
+import tubbinPresentation from "../assets/projects/tubbin-presentation.png";
+import type { VideoSpec } from "./ProjectVideo";
+
 import parkinsonsDiseaseCover from "../assets/projects/parkinsons-disease-cover.png";
 import parkinsonsDiseasePresentation from "../assets/projects/parkinsons-disease-presentation.png";
 
@@ -32,6 +43,7 @@ export type Project = {
   slug?: string;
   cover?: string;
   slides?: Slide[];
+  video?: VideoSpec;
 };
 
 const placeholderProjects: Project[] = Array.from({ length: 6 }, (_, index) => ({
@@ -83,12 +95,22 @@ const indiaPost: Project = {
   slides: [{ src: indiaPostPresentation, width: 1281, height: 32768 }],
 };
 
+const lenskart: Project = {
+  ...placeholderProjects[4],
+  title: "Lenskart",
+  description: "Integrated AI Voice Assistant",
+  slug: "lenskart",
+  path: "/work/lenskart",
+  cover: lenskartCover,
+  slides: [{ src: lenskartPresentation, width: 1920, height: 14601 }],
+};
+
 export const projects: Project[] = [
   samsungIris,
   digitalGifting,
   financialDecisions,
   indiaPost,
-  ...placeholderProjects.slice(4, 5),
+  lenskart,
   {
     ...placeholderProjects[5],
     title: "parkinsons disease",
@@ -100,7 +122,7 @@ export const projects: Project[] = [
   },
 ];
 
-export const explorations: Project[] = Array.from(
+const placeholderExplorations: Project[] = Array.from(
   { length: 3 },
   (_, index) => ({
     number: String(index + 1).padStart(2, "0"),
@@ -110,6 +132,38 @@ export const explorations: Project[] = Array.from(
     path: `/explorations/${index + 1}`,
   }),
 );
+
+const urbanSignals: Project = {
+  ...placeholderExplorations[0],
+  title: "Multivariate Urban Signals",
+  description: "Data Visualization of Urban Signals and their Correlations",
+  slug: "multivariate-urban-signals",
+  path: "/explorations/multivariate-urban-signals",
+  cover: urbanSignalsCover,
+  slides: [{ src: urbanSignalsPresentation, width: 1920, height: 8757 }],
+};
+
+const tubbin: Project = {
+  ...placeholderExplorations[1],
+  title: "Tubbin'",
+  description: "Design Management & Case Studies",
+  slug: "tubbin",
+  path: "/explorations/tubbin",
+  cover: tubbinCover,
+  video: {
+    src: "/videos/tubbin.mp4",
+    poster: tubbinFrame,
+    width: 1920,
+    height: 1080,
+  },
+  slides: [{ src: tubbinPresentation, width: 1920, height: 17649 }],
+};
+
+export const explorations: Project[] = [
+  urbanSignals,
+  tubbin,
+  ...placeholderExplorations.slice(2),
+];
 
 function useInView<T extends HTMLElement>() {
   const ref = useRef<T>(null);

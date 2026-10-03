@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { Navigate, useLocation, useParams } from "react-router";
+import { useSiteNavigate } from "../app/SiteLayout";
 import Button from "../components/Button";
+import ProjectVideo from "../components/ProjectVideo";
 import {
+  explorations,
   projects,
   type Project,
   type Slide,
@@ -81,14 +84,17 @@ export default function DetailPage() {
   const isExploration = location.pathname.startsWith("/explorations");
   const projectId = params.projectId ?? "";
 
-  const project: Project | undefined = isExploration
-    ? undefined
-    : projects.find((p) => p.slug === projectId || p.path === location.pathname);
+  const go = useSiteNavigate();
+  const project: Project | undefined = (
+    isExploration ? explorations : projects
+  ).find((p) => p.slug === projectId || p.path === location.pathname);
   const slides = project?.slides ?? [];
 
-  const heading = isExploration
-    ? `Exploration ${(params.explorationId ?? "1").padStart(2, "0")}`
-    : (project?.title ?? titleFromSlug(projectId || "Project"));
+  const heading =
+    project?.title ??
+    (isExploration
+      ? `Exploration ${(params.explorationId ?? "1").padStart(2, "0")}`
+      : titleFromSlug(projectId || "Project"));
 
   useEffect(() => {
     const previous = document.title;
@@ -98,25 +104,54 @@ export default function DetailPage() {
     };
   }, [heading]);
 
+  useEffect(() => {
+    if (!isExploration) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") go("/work#explorations");
+    };
+    const onPop = () =>
+      sessionStorage.setItem("scroll-to-explorations", "1");
+    window.addEventListener("keydown", onKey);
+    window.addEventListener("popstate", onPop);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("popstate", onPop);
+    };
+  }, [isExploration, go]);
+
+  const backTo = isExploration ? "/work#explorations" : "/work";
+  const backLabel = isExploration ? "Back to explorations" : "Back";
+  const footerLabel = isExploration
+    ? "Back to explorations"
+    : "Back to projects";
+
   const legacyRedirects: Record<string, string> = {
     "project-1": "/work/samsung-iris",
     "project-2": "/work/digital-gifting-experiences",
     "project-3": "/work/financial-decisions",
     "project-4": "/work/india-post",
+    "project-5": "/work/lenskart",
   };
-  if (legacyRedirects[projectId]) {
+  const legacyExplorations: Record<string, string> = {
+    "1": "/explorations/multivariate-urban-signals",
+    "2": "/explorations/tubbin",
+  };
+  if (isExploration && legacyExplorations[params.explorationId ?? ""]) {
+    return (
+      <Navigate to={legacyExplorations[params.explorationId ?? ""]} replace />
+    );
+  }
+  if (!isExploration && legacyRedirects[projectId]) {
     return <Navigate to={legacyRedirects[projectId]} replace />;
   }
 
   return (
     <main className="detail-page">
-      {!isExploration && (
-        <div className="detail-back">
-          <Button variant="secondary" to="/work" arrow={false}>
-            ← Back
-          </Button>
-        </div>
-      )}
+      <div className="detail-back">
+        <Button variant="secondary" to={backTo} arrow={false}>
+          ← {backLabel}
+        </Button>
+      </div>
       <div className="detail-label">
         <span className="section-dot" />
         {isExploration ? "Exploration" : "Featured work"}
@@ -127,13 +162,16 @@ export default function DetailPage() {
         <>
           {slides.length > 1 && <SlideCounter total={slides.length} />}
           <div className="detail-slides">
+            {project?.video && (
+              <ProjectVideo video={project.video} label={heading} />
+            )}
             {slides.map((slide, index) => (
               <SlideImage slide={slide} index={index} key={slide.src} />
             ))}
           </div>
           <div className="detail-footer">
-            <Button variant="primary" to="/work" arrow={false}>
-              ← Back to projects
+            <Button variant="secondary" to={backTo} arrow={false}>
+              ← {footerLabel}
             </Button>
           </div>
         </>
