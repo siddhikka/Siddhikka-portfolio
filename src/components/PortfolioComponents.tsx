@@ -116,8 +116,8 @@ export const projects: Project[] = [
   lenskart,
   {
     ...placeholderProjects[5],
-    title: "parkinsons disease",
-    description: "design for special needs",
+    title: "Parkinson's Disease",
+    description: "Design for Special Needs",
     slug: "parkinsons-disease",
     path: "/work/parkinsons-disease",
     cover: parkinsonsDiseaseCover,
