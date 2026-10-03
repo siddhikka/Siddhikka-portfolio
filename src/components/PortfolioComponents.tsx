@@ -32,6 +32,9 @@ import type { VideoSpec } from "./ProjectVideo";
 import parkinsonsDiseaseCover from "../assets/projects/parkinsons-disease-cover.png";
 import parkinsonsDiseasePresentation from "../assets/projects/parkinsons-disease-presentation.png";
 
+import goosebumpsCover from "../assets/projects/goosebumps-cover.png";
+import goosebumpsPresentation from "../assets/projects/goosebumps-presentation.png";
+
 export type Slide = { src: string; width: number; height: number };
 
 export type Project = {
@@ -159,10 +162,20 @@ const tubbin: Project = {
   slides: [{ src: tubbinPresentation, width: 1920, height: 17649 }],
 };
 
+const goosebumps: Project = {
+  ...placeholderExplorations[2],
+  title: "Goosebumps",
+  description: "Interactive Game Design | Semantics & Semiotics",
+  slug: "goosebumps",
+  path: "/explorations/goosebumps",
+  cover: goosebumpsCover,
+  slides: [{ src: goosebumpsPresentation, width: 1920, height: 12127 }],
+};
+
 export const explorations: Project[] = [
   urbanSignals,
   tubbin,
-  ...placeholderExplorations.slice(2),
+  goosebumps,
 ];
 
 function useInView<T extends HTMLElement>() {
