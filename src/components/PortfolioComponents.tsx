@@ -24,16 +24,15 @@ import lenskartPresentation from "../assets/projects/lenskart-presentation.png";
 import urbanSignalsCover from "../assets/projects/urban-signals-cover.png";
 import urbanSignalsPresentation from "../assets/projects/urban-signals-presentation.png";
 
+import goosebumpsCover from "../assets/projects/goosebumps-cover.png";
+import goosebumpsPresentation from "../assets/projects/goosebumps-presentation.png";
+
+import parkinsonsDiseaseCover from "../assets/projects/parkinsons-disease-cover.png";
+import parkinsonsDiseasePresentation from "../assets/projects/parkinsons-disease-presentation.png";
 import tubbinCover from "../assets/projects/tubbin-cover.png";
 import tubbinFrame from "../assets/projects/tubbin-frame.png";
 import tubbinPresentation from "../assets/projects/tubbin-presentation.png";
 import type { VideoSpec } from "./ProjectVideo";
-
-import parkinsonsDiseaseCover from "../assets/projects/parkinsons-disease-cover.png";
-import parkinsonsDiseasePresentation from "../assets/projects/parkinsons-disease-presentation.png";
-
-import goosebumpsCover from "../assets/projects/goosebumps-cover.png";
-import goosebumpsPresentation from "../assets/projects/goosebumps-presentation.png";
 
 export type Slide = { src: string; width: number; height: number };
 
@@ -131,7 +130,7 @@ const placeholderExplorations: Project[] = Array.from(
     number: String(index + 1).padStart(2, "0"),
     title: `Exploration ${String(index + 1).padStart(2, "0")}`,
     description: "Short one-line description",
-    tag: "Independent study",
+    tag: "",
     path: `/explorations/${index + 1}`,
   }),
 );
@@ -176,6 +175,7 @@ export const explorations: Project[] = [
   urbanSignals,
   tubbin,
   goosebumps,
+  ...placeholderExplorations.slice(3),
 ];
 
 function useInView<T extends HTMLElement>() {
@@ -274,7 +274,7 @@ function Card({
               <h3>{project.title}</h3>
               <span className="card-arrow">→</span>
             </div>
-            <span className="card-tag">{project.tag}</span>
+            {project.tag && <span className="card-tag">{project.tag}</span>}
           </div>
           <p>{project.description}</p>
         </div>

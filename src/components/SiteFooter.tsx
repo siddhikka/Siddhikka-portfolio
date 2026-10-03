@@ -10,9 +10,8 @@ const HINT_CHAOS = "Drag the stickers. Double-click to tidy up.";
 const HINT_TIDY = "Double-click to mess it up again";
 
 const SOCIALS = [
-  { label: "LinkedIn", href: "https://www.linkedin.com" },
-  { label: "Instagram", href: "https://www.instagram.com" },
-  { label: "Behance", href: "https://www.behance.net" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/siddhikka-thorat-489021329/" },
+  { label: "Behance", href: "https://www.behance.net/siddhikkathorat" },
 ];
 
 const INTERACTIVE = "a, button, .sticker, [data-cursor]";

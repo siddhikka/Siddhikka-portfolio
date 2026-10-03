@@ -4,8 +4,7 @@ import Button from "../components/Button";
 const NAME = "Siddhikka Thorat";
 const ROLE = "Product and User Experience Designer";
 const EMAIL = "thoratsiddhikka@gmail.com";
-const BEHANCE_URL = "https://behance.net/YOUR-HANDLE";
-// Put the PDF in /public with this exact name.
+const BEHANCE_URL = "https://www.behance.net/siddhikkathorat";
 const RESUME_FILE = "/Siddhikka2026Resume.pdf";
 const RESUME_DOWNLOAD_NAME = "Siddhikka-Thorat-Resume.pdf";
 

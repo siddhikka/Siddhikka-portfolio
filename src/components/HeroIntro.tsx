@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 
+import Button from "./Button";
+import heroPhoto from "../assets/siddhikka-hero.jpg";
+
 let hasPlayedIntro = false;
 
 const TIMINGS = {
@@ -58,25 +61,29 @@ export default function HeroIntro() {
           <span className="intro-name-fill">Siddhikka</span>
         </div>
 
-        <h1 id="intro-heading" className="hero-heading">
-          {[
-            "Hey, I'm Siddhikka.",
-            "I'm interested in the",
-            "space between people and",
-            "the things they use.",
-          ].map((line, index) => (
-            <span className="heading-mask" key={line}>
-              <span style={{ "--line": index } as React.CSSProperties}>{line}</span>
-            </span>
-          ))}
-        </h1>
+        <div className="hero-copy">
+          <h1 id="intro-heading" className="hero-heading">
+            {[
+              "Hey, I'm Siddhikka.",
+              "I'm interested in the",
+              "space between people and",
+              "the things they use.",
+            ].map((line, index) => (
+              <span className="heading-mask" key={line}>
+                <span style={{ "--line": index } as React.CSSProperties}>{line}</span>
+              </span>
+            ))}
+          </h1>
 
-        <div
-          className="photo-placeholder"
-          role="img"
-          aria-label="Photo placeholder"
-        >
-          <span>Add photo</span>
+          <div className="hero-cta">
+            <Button variant="secondary" to="/about" arrow>
+              About me
+            </Button>
+          </div>
+        </div>
+
+        <div className="photo-placeholder">
+          <img src={heroPhoto} alt="Siddhikka" />
         </div>
 
         <SkillsTicker />

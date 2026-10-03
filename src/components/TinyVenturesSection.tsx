@@ -6,12 +6,15 @@ import {
   type MotionValue,
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import Button from "./Button";
 import ImageSlot from "./ImageSlot";
 import ScrollFillText from "./ScrollFillText";
+import venture1 from "../assets/ventures/photo-1.jpg";
+import venture2 from "../assets/ventures/photo-2.jpg";
+import venture3 from "../assets/ventures/photo-3.jpg";
+import venture4 from "../assets/ventures/photo-4.jpg";
+import venture5 from "../assets/ventures/photo-5.jpg";
+import venture6 from "../assets/ventures/photo-6.jpg";
 
-// Clear this string to remove the "Visit Ivory" button.
-const IVORY_URL = "https://instagram.com/YOUR-IVORY-HANDLE";
 
 const COLLAGE_W = 640;
 const COLLAGE_H = 720;
@@ -33,12 +36,12 @@ const PHOTOS: {
   shape: Shape;
   parallax: [number, number];
 }[] = [
-  { label: "Add photo: stall", x: 0, y: 30, w: 280, h: 360, rot: -3, rotMobile: -1.5, shape: "round", parallax: [-30, 10] },
-  { label: "Add photo: totes", x: 262, y: 0, w: 240, h: 240, rot: 4, rotMobile: 2, shape: "round", parallax: [10, -20] },
-  { label: "Add photo: totes", x: 175, y: 300, w: 300, h: 220, rot: -2, rotMobile: -1, shape: "round", parallax: [-10, 30] },
-  { label: "Add photo: process", x: 420, y: 190, w: 220, h: 300, rot: 3, rotMobile: 1.5, shape: "arch", parallax: [40, -10] },
-  { label: "Add photo: stall", x: 20, y: 480, w: 200, h: 200, rot: 0, rotMobile: 0, shape: "circle", parallax: [-20, 50] },
-  { label: "Add photo: details", x: 370, y: 510, w: 260, h: 200, rot: -4, rotMobile: -2, shape: "round", parallax: [20, -30] },
+  { src: venture1, label: "Add photo: stall", x: 0, y: 30, w: 280, h: 360, rot: -3, rotMobile: -1.5, shape: "round", parallax: [-30, 10] },
+  { src: venture2, label: "Add photo: totes", x: 262, y: 0, w: 240, h: 240, rot: 4, rotMobile: 2, shape: "round", parallax: [10, -20] },
+  { src: venture3, label: "Add photo: totes", x: 175, y: 300, w: 300, h: 220, rot: -2, rotMobile: -1, shape: "round", parallax: [-10, 30] },
+  { src: venture4, label: "Add photo: process", x: 420, y: 190, w: 220, h: 300, rot: 3, rotMobile: 1.5, shape: "arch", parallax: [40, -10] },
+  { src: venture5, label: "Add photo: stall", x: 20, y: 480, w: 200, h: 200, rot: 0, rotMobile: 0, shape: "circle", parallax: [-20, 50] },
+  { src: venture6, label: "Add photo: details", x: 370, y: 510, w: 260, h: 200, rot: -4, rotMobile: -2, shape: "round", parallax: [20, -30] },
 ];
 
 function useIsMobile() {
@@ -263,7 +266,7 @@ export default function TinyVenturesSection() {
         </div>
 
         <div className="tiny-copy">
-          <div className="accent-label">Side quest</div>
+          <div className="accent-label tiny-accent">Side quest</div>
           <h2 id="tiny-title" className="tiny-title">
             <span>Tiny</span>
             <span>Ventures</span>
@@ -280,13 +283,6 @@ export default function TinyVenturesSection() {
               text="It’s small, handmade, and very much a side quest, but it taught me a lot about sourcing the fabrics and materials, making, selling, figuring things out as we go, and building something from scratch."
             />
           </div>
-          {IVORY_URL && (
-            <div className="tiny-cta">
-              <Button variant="secondary" href={IVORY_URL}>
-                Visit Ivory
-              </Button>
-            </div>
-          )}
         </div>
       </div>
     </section>

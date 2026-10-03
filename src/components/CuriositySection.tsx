@@ -2,12 +2,21 @@ import { useReducedMotion } from "framer-motion";
 import { type PointerEvent, useEffect, useRef, useState } from "react";
 import ActivityCard, { type Activity } from "./ActivityCard";
 import Button from "./Button";
+import trek1 from "../assets/about/trek-1.jpg";
+import trek2 from "../assets/about/trek-2.jpg";
+import trek3 from "../assets/about/trek-3.jpg";
+import conferences from "../assets/about/conferences.jpg";
+import letters1 from "../assets/about/letters-1.jpg";
+import letters2 from "../assets/about/letters-2.jpg";
+import cooking from "../assets/about/cooking.jpg";
+import movies from "../assets/about/movies.jpg";
+import designStudios from "../assets/about/design-studios.jpg";
 
 const SPEED_PX_PER_S = 50;
 const EASE_TAU_MS = 130;
 const HOLD_MS = 250;
 
-const LETTERBOXD_ID = "YOUR-LETTERBOXD-ID";
+const LETTERBOXD_ID = "siddhikka10";
 const LETTERBOXD_URL = `https://letterboxd.com/${LETTERBOXD_ID}`;
 
 const ACTIVITIES: Activity[] = [
@@ -18,6 +27,7 @@ const ACTIVITIES: Activity[] = [
     tags: ["Studios", "Process"],
     tone: "wash",
     tilt: -2,
+    image: designStudios,
   },
   {
     number: "02",
@@ -28,6 +38,7 @@ const ACTIVITIES: Activity[] = [
     tone: "grey",
     tilt: 1,
     icon: "microphone",
+    image: conferences,
   },
   {
     number: "03",
@@ -37,6 +48,7 @@ const ACTIVITIES: Activity[] = [
     tags: ["Letters", "Zines"],
     tone: "dark",
     tilt: 0,
+    images: [letters1, letters2],
   },
   {
     number: "04",
@@ -45,6 +57,7 @@ const ACTIVITIES: Activity[] = [
     tags: ["Film", "Letterboxd"],
     tone: "lavender",
     tilt: 2,
+    image: movies,
   },
   {
     number: "05",
@@ -54,6 +67,7 @@ const ACTIVITIES: Activity[] = [
     tone: "white",
     tilt: -1,
     icon: "mountain",
+    images: [trek1, trek2, trek3],
   },
   {
     number: "06",
@@ -62,6 +76,7 @@ const ACTIVITIES: Activity[] = [
     tags: ["Cooking", "Game nights"],
     tone: "grey",
     tilt: 1,
+    image: cooking,
   },
 ];
 

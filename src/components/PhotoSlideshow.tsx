@@ -1,14 +1,21 @@
 import { useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
+import photo1 from "../assets/about/photo-1.jpg";
+import photo2 from "../assets/about/photo-2.jpg";
+import photo3 from "../assets/about/photo-3.jpg";
+import photo4 from "../assets/about/photo-4.jpg";
+import photo5 from "../assets/about/photo-5.jpg";
 import ImageSlot from "./ImageSlot";
 
 const INTERVAL_MS = 3500;
 
-// Set `src` on a slot to swap in a real photo.
-const SLIDES: { src?: string; label: string }[] = Array.from(
-  { length: 5 },
-  (_, index) => ({ src: undefined, label: `Add photo ${index + 1}` }),
-);
+const SLIDES: { src: string; label: string }[] = [
+  photo1,
+  photo2,
+  photo3,
+  photo4,
+  photo5,
+].map((src, index) => ({ src, label: `Photo ${index + 1}` }));
 
 const pad = (n: number) => String(n).padStart(2, "0");
 

@@ -135,6 +135,7 @@ export default function DetailPage() {
   const legacyExplorations: Record<string, string> = {
     "1": "/explorations/multivariate-urban-signals",
     "2": "/explorations/tubbin",
+    "3": "/explorations/goosebumps",
   };
   if (isExploration && legacyExplorations[params.explorationId ?? ""]) {
     return (

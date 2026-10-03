@@ -1,16 +1,22 @@
 import { useReducedMotion } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
+import frame1 from "../assets/clumsy/frame-1.jpg";
+import frame2 from "../assets/clumsy/frame-2.jpg";
+import frame3 from "../assets/clumsy/frame-3.jpg";
+import frame4 from "../assets/clumsy/frame-4.jpg";
+import frame5 from "../assets/clumsy/frame-5.jpg";
 import ImageSlot from "./ImageSlot";
 
 const FRAME_MS = 450;
 const LAST_FRAME_MS = 1000;
 
-// Set `src` on a slot to swap in a real photo. Slots without a src are skipped
-// once at least one image exists.
-const SLOTS: { src?: string; label: string }[] = Array.from(
-  { length: 5 },
-  (_, index) => ({ src: undefined, label: `Add photo ${index + 1}` }),
-);
+const SLOTS: { src?: string; label: string }[] = [
+  frame1,
+  frame2,
+  frame3,
+  frame4,
+  frame5,
+].map((src, index) => ({ src, label: `Frame ${index + 1}` }));
 
 const TITLE_LINES = ["Clumsy", "Little Love"];
 const DESCRIPTION =
